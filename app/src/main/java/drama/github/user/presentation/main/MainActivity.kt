@@ -48,4 +48,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override fun observeData() {
 
     }
+
+    fun deleteBookmarkUser(id: Long) {
+        val searchUserFragment =
+            (binding.viewpagerMain.adapter as MainViewPagerAdapter).createFragment(0) as SearchUserFragment
+        searchUserFragment.setDeleteBookmark(id)
+    }
 }

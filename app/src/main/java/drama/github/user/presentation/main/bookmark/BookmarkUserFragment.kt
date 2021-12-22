@@ -10,6 +10,7 @@ import drama.github.user.databinding.FragmentBookmarkUserBinding
 import drama.github.user.model.SearchUserModel
 import drama.github.user.model.UserGroupModel
 import drama.github.user.presentation.base.BaseFragment
+import drama.github.user.presentation.main.MainActivity
 import drama.github.user.presentation.main.UserGroupAdapter
 import drama.github.user.util.Util
 import drama.github.user.util.choseng.GetChoSeng
@@ -112,24 +113,7 @@ class BookmarkUserFragment : BaseFragment<FragmentBookmarkUserBinding, BookmarkU
     private fun handleBookmark(successResponse: BookmarkUserState.Success) {
         if (successResponse is BookmarkUserState.Success.DeleteBookmark) {
             showToastMessage(getString(successResponse.messageId))
-        }
-    }
-
-    private fun updateBookmarkInList(id: Long, bookmark:Boolean) {
-
-        // 북마크 등록, 해제 정보를 리스트 UI에 알려준다.
-        (binding.recyclerviewBookmarkUser.adapter as UserGroupAdapter).apply {
-            this.userGroupModelList.forEachIndexed { groupIndex, userGroupModel ->
-                userGroupModel.userList.forEachIndexed { index, searchUserModel ->
-                    // 중첩 리사이클러뷰 안에서 북마크 수정하려는 인덱스만 업데이트 한다.
-                    if (searchUserModel.id == id) {
-                        searchUserModel.bookmark = bookmark
-                        updateBookmark(groupIndex, index)
-                        return
-                    }
-                }
-
-            }
+            (activity as MainActivity).deleteBookmarkUser(successResponse.id)
         }
     }
 

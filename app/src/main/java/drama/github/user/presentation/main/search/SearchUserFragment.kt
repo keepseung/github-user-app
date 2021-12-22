@@ -188,6 +188,10 @@ class SearchUserFragment : BaseFragment<FragmentSearchUserBinding, SearchUserVie
         (binding.recyclerviewSearchUser.adapter as UserGroupAdapter).addUserGroupModel(userGroupModelList)
     }
 
+    fun setDeleteBookmark(id: Long) {
+        updateBookmarkInList(id, false)
+    }
+
     companion object {
         const val PER_GROUP_SPACE = 8
     }
