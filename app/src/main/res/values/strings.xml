@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MyGithubUser</string>
+    <string name="toolbar_name">Github Stars</string>
+    <string name="tab_api">API</string>
+    <string name="tab_local">Local</string>
+    <string name="hint_search">검색어를 입력하세요</string>
+    <string name="sever_error">서버 통신 중 에러가 발생했습니다.</string>
+    <string name="query_no_result">검색어에 대한 검색 결과가 없습니다.</string>
+    <string name="get_bookmark_error">북마크한 유저 조회 중에 에러가 발생했습니다.</string>
+    <string name="add_bookmark_success">해당 사용자를 북마크했습니다.</string>
+    <string name="add_bookmark_error">북마크 저장 중에 에러가 발생했습니다.</string>
+    <string name="delete_bookmark_success">해당 사용자에 대한 북마크를 해제했습니다.</string>
+    <string name="delete_bookmark_error">북마크 삭제 중에 에러가 발생했습니다.</string>
+
+</resources>
