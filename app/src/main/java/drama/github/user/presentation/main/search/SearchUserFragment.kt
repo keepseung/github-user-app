@@ -127,6 +127,7 @@ class SearchUserFragment : BaseFragment<FragmentSearchUserBinding, SearchUserVie
     }
 
     private fun updateBookmarkInList(id: Long, bookmark:Boolean) {
+
         // 북마크 등록, 해제 정보를 리스트 UI에 알려준다.
         (binding.recyclerviewSearchUser.adapter as UserGroupAdapter).apply {
             this.userGroupModelList.forEachIndexed { groupIndex, userGroupModel ->

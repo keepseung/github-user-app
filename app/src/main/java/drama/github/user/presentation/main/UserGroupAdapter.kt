@@ -14,7 +14,7 @@ import drama.github.user.model.UserGroupModel
  */
 class UserGroupAdapter : RecyclerView.Adapter<UserGroupAdapter.SearchUserGroupViewHolder>() {
     var userGroupModelList: ArrayList<UserGroupModel> = ArrayList()
-    private val userRecyclerViewAdapterList = ArrayList<UserAdapter>()
+    private var userRecyclerViewAdapterList = ArrayList<UserAdapter>()
     var bookmarkEvent: ((SearchUserModel) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchUserGroupViewHolder {
@@ -65,6 +65,7 @@ class UserGroupAdapter : RecyclerView.Adapter<UserGroupAdapter.SearchUserGroupVi
     }
 
     fun addUserGroupModel(userModelList: ArrayList<UserGroupModel>){
+        userRecyclerViewAdapterList = ArrayList()
         this.userGroupModelList = userModelList
         notifyDataSetChanged()
     }

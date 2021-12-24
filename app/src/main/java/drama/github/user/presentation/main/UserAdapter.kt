@@ -42,7 +42,6 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.SearchUserViewHolder>() {
         fun bind(searchUserModel: SearchUserModel) {
             binding.userModel = searchUserModel
             binding.imageviewUser.load(searchUserModel.profileImageUrl)
-            Log.i("check ", "check ${searchUserModel.bookmark}")
             binding.imageviewBookmark.isSelected = searchUserModel.bookmark
 
             binding.imageviewBookmark.setOnClickListener {
