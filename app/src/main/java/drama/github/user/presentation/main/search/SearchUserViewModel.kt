@@ -31,12 +31,11 @@ class SearchUserViewModel @Inject constructor(
             return
         }
         compositeDisposable.add(
-            searchUserRepository.getBookmarkUserList(queryString)
+            searchUserRepository.getBookmarkUserAll()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ bookmarkUserList ->
-                    Log.i("log","bookmarkUserList ${bookmarkUserList.size}")
-                    bookmarkUserList?.let {
+                   bookmarkUserList?.let {
 
                         // API 응답 데이터를 모델로 데이터 변환
                         val searchUserModelList:ArrayList<SearchUserModel> = searchUserResponse.userList.map {
@@ -46,16 +45,16 @@ class SearchUserViewModel @Inject constructor(
                         // 북마크한 사용자가 없는 경우 API 결과를 반환함
                         if (bookmarkUserList.isEmpty()){
                             setSearchState(SearchUserState.Success.GetUser(searchUserModelList))
+                            return@let
                         }
 
                         // 북마크한 사용자 아이디 리스트 조회
                         val bookmarkIdList = it.map { it.id }.toCollection(ArrayList())
                         // 북마크한 사용자가 있는 경우 북마크 데이터 반영
-                        searchUserModelList.map { it.bookmark = it.id in bookmarkIdList }
+                        searchUserModelList.map { it.bookmark = it.id in bookmarkIdList }.toCollection(ArrayList())
 
                         setSearchState(SearchUserState.Success.GetUser(searchUserModelList))
                     }?: kotlin.run {
-                        Log.e("error", "null")
                         setSearchState(SearchUserState.Error(R.string.get_bookmark_error))
                     }
 

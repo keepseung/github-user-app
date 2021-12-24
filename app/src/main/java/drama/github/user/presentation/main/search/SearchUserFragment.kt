@@ -146,7 +146,7 @@ class SearchUserFragment : BaseFragment<FragmentSearchUserBinding, SearchUserVie
     private fun bindUserList(successResponse: SearchUserState.Success.GetUser) {
         // 검색 결과가 없는 경우 없다는 텍스트를 보여준다.
         val _searchUserModelList = successResponse.searchUserModelList
-        if (_searchUserModelList.isEmpty()) {
+        if (_searchUserModelList.size ==0) {
             binding.recyclerviewSearchUser.isVisible = false
             binding.textviewNoResultSearchUser.isVisible = true
             return
@@ -171,7 +171,8 @@ class SearchUserFragment : BaseFragment<FragmentSearchUserBinding, SearchUserVie
                         SearchUserModel(
                             id = it.id,
                             name = it.name,
-                            profileImageUrl = it.profileImageUrl
+                            profileImageUrl = it.profileImageUrl,
+                            bookmark = it.bookmark
                         )
                     }
                     .toCollection(ArrayList())

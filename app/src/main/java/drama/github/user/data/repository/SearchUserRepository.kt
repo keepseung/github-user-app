@@ -12,6 +12,7 @@ interface SearchUserRepository {
 
     fun getSearchUserList(name:String): Single<Response<SearchUserResponse>>
     fun getBookmarkUserList(name:String): Single<List<BookmarkUserEntity>>
+    fun getBookmarkUserAll(): Single<List<BookmarkUserEntity>>
     fun addBookmarkUser(bookmarkUserEntity: BookmarkUserEntity): Single<Long>
     fun deleteBookmarkUser(id: Long):Single<Int>
 }

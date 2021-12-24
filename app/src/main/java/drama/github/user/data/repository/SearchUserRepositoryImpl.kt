@@ -31,4 +31,9 @@ class SearchUserRepositoryImpl @Inject constructor (
     override fun deleteBookmarkUser(id: Long): Single<Int> {
         return bookmarkUserDao.deleteById(id)
     }
+
+    override fun getBookmarkUserAll(): Single<List<BookmarkUserEntity>>{
+        return bookmarkUserDao.findAll()
+    }
+
 }

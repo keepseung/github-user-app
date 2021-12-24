@@ -1,5 +1,6 @@
 package drama.github.user.presentation.main
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -41,6 +42,7 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.SearchUserViewHolder>() {
         fun bind(searchUserModel: SearchUserModel) {
             binding.userModel = searchUserModel
             binding.imageviewUser.load(searchUserModel.profileImageUrl)
+            Log.i("check ", "check ${searchUserModel.bookmark}")
             binding.imageviewBookmark.isSelected = searchUserModel.bookmark
 
             binding.imageviewBookmark.setOnClickListener {

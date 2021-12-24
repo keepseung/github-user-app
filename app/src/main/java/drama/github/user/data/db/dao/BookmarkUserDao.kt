@@ -21,4 +21,8 @@ interface BookmarkUserDao {
 
     @Query("DELETE FROM BookmarkUserEntity WHERE id=:id")
     fun deleteById(id:Long): Single<Int>
+
+    @Query("SELECT * FROM BookmarkUserEntity")
+    fun findAll(): Single<List<BookmarkUserEntity>>
+
 }
